@@ -63,7 +63,7 @@ def region_of_interest(canny):
  
 
 
-cap = cv2.VideoCapture("Florian/AUTOPROCEJT/test2.mp4")
+cap = cv2.VideoCapture("****") #insert video here 
 while(cap.isOpened()):
     _, frame = cap.read()
     canny_image = canny(frame)
