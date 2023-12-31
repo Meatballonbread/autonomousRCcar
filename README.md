@@ -1,0 +1,1 @@
+An attempt to make my remote-controlled car drive autonomously using 3 GoPros, a Rasperry Pi, an Arduino and mediocre programming skills using a neuroyal network and openCV. The image is to be evaluated live and integrated directly into the driving behavior of the car. Test videos are from YouTube: https://www.youtube.com/watch?v=00fkIDtgzUY
