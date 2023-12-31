@@ -4,8 +4,8 @@ import numpy as np
 def make_points(image, line):
     try:
         slope, intercept = line
-        y1 = int(image.shape[0])  # Unten am Bild
-        y2 = int(y1 * 3 / 5)      # Etwas über der Mitte des Bildes
+        y1 = int(image.shape[0])  
+        y2 = int(y1 * 3 / 5)      
         x1 = int((y1 - intercept) / slope)
         x2 = int((y2 - intercept) / slope)
         return [x1, y1, x2, y2]
@@ -20,14 +20,14 @@ def average_slope_intercept(image, lines):
         return None
     for line in lines:
         for x1, y1, x2, y2 in line:
-            if x2 - x1 == 0:  # Vermeidung einer Division durch Null
+            if x2 - x1 == 0:  
                 continue
             fit = np.polyfit((x1, x2), (y1, y2), 1)
             slope = fit[0]
             intercept = fit[1]
-            if slope < 0:  # Negative Steigung = Linke Linie
+            if slope < 0:  
                 left_fit.append((slope, intercept))
-            else:  # Positive Steigung = Rechte Linie
+            else:  
                 right_fit.append((slope, intercept))
 
     if left_fit:
@@ -47,7 +47,7 @@ def average_slope_intercept(image, lines):
 def canny(img):
     gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     blur = cv2.GaussianBlur(gray, (5, 5), 0)
-    canny = cv2.Canny(blur, 50, 150)  # Experimentieren Sie mit diesen Werten
+    canny = cv2.Canny(blur, 50, 130)  # change the values here, if its not having the right range of edges.
     return canny
 
 def display_lines(img, lines):
@@ -77,7 +77,7 @@ def region_of_interest(canny):
     masked_image = cv2.bitwise_and(canny, mask)
     return masked_image
 
-cap = cv2.VideoCapture("random_german_Autobahn.mp4")
+cap = cv2.VideoCapture("/Users/floriangrassl/Documents/autonomousRCcar/random_german_Autobahn.mp4")
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
